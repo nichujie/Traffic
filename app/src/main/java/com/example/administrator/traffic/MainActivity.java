@@ -17,6 +17,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.server.converter.StringToIntConverter;
 
 import org.w3c.dom.Text;
 
@@ -93,6 +94,22 @@ public class MainActivity extends AppCompatActivity {
                     playerList = playerList + playerName[player[i]];
                     playerList = playerList + "\n";
                 }
+                int tmp = randomer.nextInt(4) + 1;
+                playerList = playerList + "不守法司机目标: ";
+                playerList = playerList + String.valueOf(tmp);
+                playerList = playerList + "\n";
+                tmp = randomer.nextInt(16) + 1;
+                playerList = playerList + "入口: ";
+                playerList = playerList + String.valueOf(tmp);
+                playerList = playerList + "\n";
+                int tmp2;
+                tmp2 = tmp;
+                while(tmp == tmp2){
+                    tmp = randomer.nextInt(16) + 1;
+                }
+                playerList = playerList + "出口: ";
+                playerList = playerList + String.valueOf(tmp);
+                playerList = playerList + "\n";
                 bnt2.setVisibility(View.INVISIBLE);
                 bnt1.setVisibility(View.VISIBLE);
                 txt3.setText("回合数");
@@ -116,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 status++;
                 round++;
                 txt1.setText(hint[status % 4]);
-                if (round >= 41) {
+                if (round >= 25) {
                     txt2.setText("");
                     txt1.setText(ending);
                 } else txt2.setText(String.valueOf(round));
